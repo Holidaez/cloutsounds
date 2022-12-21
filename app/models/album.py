@@ -13,5 +13,4 @@ class Album(db.Model):
     genre = db.Column(db.String(300))
 
     user = db.relationship('User', back_populates='albums')
-    songs = db.relationship('Album', back_populates='album')
-    
+    songs = db.relationship('Song', back_populates='album')
