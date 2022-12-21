@@ -10,9 +10,9 @@ class Song(db.Model):
     genre = db.Column(db.String(30), nullable=False)
     song_file = db.Column(db.String(1000), nullable=False)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    playlist_id = db.Column(db.Integer, db.ForeignKey('playlists.id'), nullable=True)
-    album_id = db.Column(db.Integer, db.ForeignKey('albums.id'), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    playlist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('playlists.id')), nullable=True)
+    album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id')), nullable=True)
 
     user = db.relationship('User', back_populates='songs')
     playlist = db.relationship('Playlist', back_populates='songs')
