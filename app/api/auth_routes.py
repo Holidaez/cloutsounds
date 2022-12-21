@@ -25,34 +25,11 @@ def authenticate():
     """
     if current_user.is_authenticated:
         queried_user = User.query.get(current_user.id)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", queried_user.comments)
-        user_song_list = []
-        user_comment_list = []
-        user_album_list = []
-        user_playlist_list = []
         user = current_user.to_dict()
-
-        for song in queried_user.songs:
-            song_dict = song.to_dict()
-            user_song_list.append(song_dict)
-
-        for album in queried_user.albums:
-            album_dict = album.to_dict()
-            user_album_list.append(album_dict)
-
-        for playlist in queried_user.playlists:
-            playlist_dict = playlist.to_dict()
-            user_playlist_list.append(playlist_dict)
-
-        for comment in queried_user.comments:
-            comment_dict = comment.to_dict()
-            user_comment_list.append(comment_dict)
-
-        user['song_list'] = user_song_list
-        user['albums'] = user_album_list
-        user['playlists'] = user_playlist_list
-        user['comments'] = user_comment_list
-
+        user['song_list']= [song.to_dict() for song in queried_user.songs]
+        user['album_list']= [album.to_dict() for album in queried_user.albums]
+        user['playlist_list']= [playlist.to_dict() for playlist in queried_user.playlists]
+        user['comment_list']= [comment.to_dict() for comment in queried_user.comments]
         return user
 
     return {'errors': ['Unauthorized']}
@@ -71,37 +48,15 @@ def login():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
-        
+
         queried_user = User.query.get(current_user.id)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", queried_user.comments)
-        user_song_list = []
-        user_comment_list = []
-        user_album_list = []
-        user_playlist_list = []
         user = current_user.to_dict()
-
-        for song in queried_user.songs:
-            song_dict = song.to_dict()
-            user_song_list.append(song_dict)
-
-        for album in queried_user.albums:
-            album_dict = album.to_dict()
-            user_album_list.append(album_dict)
-
-        for playlist in queried_user.playlists:
-            playlist_dict = playlist.to_dict()
-            user_playlist_list.append(playlist_dict)
-
-        for comment in queried_user.comments:
-            comment_dict = comment.to_dict()
-            user_comment_list.append(comment_dict)
-
-        user['song_list'] = user_song_list
-        user['albums'] = user_album_list
-        user['playlists'] = user_playlist_list
-        user['comments'] = user_comment_list
-
+        user['song_list']= [song.to_dict() for song in queried_user.songs]
+        user['album_list']= [album.to_dict() for album in queried_user.albums]
+        user['playlist_list']= [playlist.to_dict() for playlist in queried_user.playlists]
+        user['comment_list']= [comment.to_dict() for comment in queried_user.comments]
         return user
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
