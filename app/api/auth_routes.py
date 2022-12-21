@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User,Song, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -24,7 +24,15 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        return current_user.to_dict()
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",current_user)
+        queried_user = User.query.get(current_user.id)
+        user = current_user.to_dict()
+        user['song_list']= [song.to_dict() for song in queried_user.songs]
+        user['album_list']= [album.to_dict() for album in queried_user.albums]
+        user['playlist_list']= [playlist.to_dict() for playlist in queried_user.playlists]
+        user['comment_list']= [comment.to_dict() for comment in queried_user.comments]
+        return user
+
     return {'errors': ['Unauthorized']}
 
 
@@ -40,8 +48,16 @@ def login():
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
-        login_user(user)
-        return user.to_dict()
+        login_user(user, remember=True, force=True)
+
+        queried_user = User.query.get(current_user.id)
+        user = current_user.to_dict()
+        user['song_list']= [song.to_dict() for song in queried_user.songs]
+        user['album_list']= [album.to_dict() for album in queried_user.albums]
+        user['playlist_list']= [playlist.to_dict() for playlist in queried_user.playlists]
+        user['comment_list']= [comment.to_dict() for comment in queried_user.comments]
+        return user
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
