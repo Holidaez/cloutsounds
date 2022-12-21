@@ -4,7 +4,7 @@ def seed_songs():
     song1 = Song(
         title = 'Life Like',
         genre = 'Hip-Hop',
-        song_file = 's3://cloutsounds/lifelike-126735.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/lifelike-126735.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1
@@ -12,7 +12,7 @@ def seed_songs():
     song2 = Song(
         title = 'Brainfluid',
         genre = 'RNB',
-        song_file = 's3://cloutsounds/cinim-brainfluid-122844.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/cinim-brainfluid-122844.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1
@@ -20,7 +20,7 @@ def seed_songs():
     song3 = Song(
         title = 'Drop It',
         genre = 'RNB',
-        song_file = 's3://cloutsounds/drop-it-124014.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/drop-it-124014.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1
@@ -28,7 +28,7 @@ def seed_songs():
     song4 = Song (
         title = 'Mountain Path',
         genre = 'RNB',
-        song_file = 's3://cloutsounds/mountain-path-125573.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/mountain-path-125573.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1
@@ -36,7 +36,7 @@ def seed_songs():
     song5 = Song (
         title = 'Password Infinity',
         genre = 'RNB',
-        song_file = 's3://cloutsounds/password-infinity-123276.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/password-infinity-123276.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1
@@ -44,7 +44,7 @@ def seed_songs():
     song6 = Song (
         title = 'Weeknds',
         genre = 'RNB',
-        song_file = 's3://cloutsounds/weeknds-122592.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/weeknds-122592.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1
@@ -52,7 +52,7 @@ def seed_songs():
     song7 = Song (
         title = 'Calm My Mind',
         genre = 'RNB',
-        song_file = 's3://cloutsounds/please-calm-my-mind-125566.mp3',
+        song_file = 'https://cloutsounds.s3.amazonaws.com/please-calm-my-mind-125566.mp3',
         user_id = 1,
         playlist_id = 1,
         album_id = 1

@@ -37,7 +37,7 @@ def seed_comments():
     db.session.add(comment4)
     db.session.add(comment5)
     db.session.add(comment6)
-
+    db.session.commit()
 
 def undo_comments():
     if environment == "production":
