@@ -24,6 +24,7 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",current_user)
         queried_user = User.query.get(current_user.id)
         user = current_user.to_dict()
         user['song_list']= [song.to_dict() for song in queried_user.songs]
@@ -47,7 +48,7 @@ def login():
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
-        login_user(user)
+        login_user(user, remember=True, force=True)
 
         queried_user = User.query.get(current_user.id)
         user = current_user.to_dict()
