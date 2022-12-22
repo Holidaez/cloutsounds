@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import MainPage from './components/mainPage/landingPage';
+import FilePlayer from 'react-player/file';
+import Player from './components/player';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +30,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Player />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
