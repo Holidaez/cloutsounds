@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import MainPage from './components/mainPage/landingPage';
 import FilePlayer from 'react-player/file';
 import Player from './components/player';
+import SongUploadForm from './components/SongFeature/UploadSong';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/upload/:userId' exact={true}>
+          <SongUploadForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />

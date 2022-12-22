@@ -13,6 +13,7 @@ const Player = () => {
             <ReactPlayer
             url={currentSong}
             controls={true}
+            playing={true}
             height={75}
             width={1000}
             />
