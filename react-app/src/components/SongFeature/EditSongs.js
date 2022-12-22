@@ -1,44 +1,38 @@
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 
 
 
 
-const SongUploadForm = () => {
+export default function EditSongsForm() {
     const history = useHistory()
+    const dispatch = useDispatch()
+    const { songId } = useParams()
     const userId = useSelector(state => state.session.user.id)
-    const [song_file, setSong_file] = useState('')
-    const [songLoading, setSongLoading] = useState(false)
-    const [songTitle, setSongTitle] = useState('')
-    const [genre, setGenre] = useState('Hip-Hop')
+    const song = useSelector(state => state.selectedSong)
 
-
+    const [songTitle, setSongTitle] = useState(song.title)
+    const [genre, setGenre] = useState(song.genre)
     const handleSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('audio', song_file)
-        formData.append('title', songTitle)
-        formData.append('genre', genre)
-        formData.append('userId', userId)
-        setSongLoading(true)
-        const response = await fetch('/api/songs/add', {
-            method:"POST",
+        formData.append('title',songTitle)
+        formData.append('genre',genre)
+        formData.append('userId',userId)
+        formData.append('songId',songId)
+        const response = await fetch('/api/songs/edit', {
+            method:'POST',
             body:formData
         })
-        if (response.ok){
-            await response.json()
-            setSongLoading(false)
-            history.push('/')
+        const res = await response.json()
+        if(res.errors) {
+            return alert(res.errors.map(error=>error))
         }else {
-            setSongLoading(false)
-            console.log('error')
+            history.push('/')
         }
     }
-    const updateSong = (e) => {
-        const file = e.target.files[0]
-        setSong_file(file)
-    }
+
     return (
         <div>
             <div id="upload-song-container">
@@ -48,11 +42,6 @@ const SongUploadForm = () => {
                     placeholder="Song Title"
                     value={songTitle}
                     onChange={e=>setSongTitle(e.target.value)}
-                    />
-                    <input
-                    type="file"
-                    accept="audio/*"
-                    onChange={updateSong}
                     />
                     <select
                     id="song-genre"
@@ -68,11 +57,9 @@ const SongUploadForm = () => {
                         <option value={"Country"}>Country</option>
                         <option value={"RNB"}>RNB</option>
                     </select>
-                    <button type="submit">Upload Song</button>
+                    <button type="submit">Edit Song</button>
                 </form>
             </div>
         </div>
     )
 }
-
-export default SongUploadForm

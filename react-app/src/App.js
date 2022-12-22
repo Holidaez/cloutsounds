@@ -12,6 +12,7 @@ import MainPage from './components/mainPage/landingPage';
 import FilePlayer from 'react-player/file';
 import Player from './components/player';
 import SongUploadForm from './components/SongFeature/UploadSong';
+import EditSongsForm from './components/SongFeature/EditSongs';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/upload/:userId' exact={true}>
           <SongUploadForm/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/song/:songId'>
+          <EditSongsForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />

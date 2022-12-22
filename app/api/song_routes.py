@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required
 from app.forms import SongForm
 from app.models import Song, db
@@ -28,10 +29,9 @@ def add_song():
     """
     Adds a Song to the Database
     """
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", request.files)
     if "audio" not in request.files:
         print("INSIDE OF audio_FILE IF")
-        return {"errors:image required"},400
+        return {"errors:Song File required"},400
     audio = request.files["audio"]
     if not allowed_file(audio.filename):
         print("INSIDE OF ALLOWED FILE ERROR")
@@ -53,3 +53,21 @@ def add_song():
     db.session.add(new_song)
     db.session.commit()
     return {'url':url}
+
+@song_routes.route('/edit', methods=['POST'])
+def updateSong():
+    """
+    Edits a specific song by Song Id
+    """
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", request)
+    # songId = request.files['songId']
+    form = SongForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        song_to_edit = Song.query.filter(Song.id == form.data['songId']).first()
+        song_to_edit.genre = form.data['genre']
+        song_to_edit.title = form.data['title']
+        db.session.commit()
+        returning_song = song_to_edit.to_dict()
+        return returning_song
+    return {'errors': validation_errors_to_error_messages(form.errors)},401

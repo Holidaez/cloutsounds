@@ -1,0 +1,51 @@
+#song-flex-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+#song-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: purple;
+    min-width: 20%;
+    min-height: 5%;
+    margin: 1%;
+}
+
+#uploader-name {
+    border: none;
+    background-color: purple;
+    color: white;
+    margin-bottom: 10px;
+}
+#uploader-name:hover {
+    cursor: pointer;
+}
+
+.song-title {
+    font-size: 20px;
+    margin-top: 10px;
+    border: none;
+    background-color: purple;
+    color: white;
+}
+.song-title:hover {
+    cursor: pointer;
+}
+
+.button-img-container {
+    background-color: purple;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.play-button-img {
+    width: 25px;
+    color: white;
+}
