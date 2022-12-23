@@ -14,6 +14,7 @@ import Player from './components/player';
 import SongUploadForm from './components/SongFeature/UploadSong';
 import EditSongsForm from './components/SongFeature/EditSongs';
 import SingleSongPage from './components/SongFeature/SingleSongPage';
+import LogoutButton from './components/auth/LogoutButton';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,7 +51,7 @@ function App() {
         <ProtectedRoute path='/song/:songId' exact={true}>
           <SingleSongPage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/upload/:userId' exact={true}>
+        <ProtectedRoute path='/upload' exact={true}>
           <SongUploadForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/edit/:songId' exact={true}>
@@ -58,6 +59,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/logout' exact={true}>
+          <LogoutButton/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

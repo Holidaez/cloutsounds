@@ -49,3 +49,7 @@
     width: 25px;
     color: white;
 }
+#page-container {
+    margin-top: 5%;
+    margin-bottom: 6%;
+}

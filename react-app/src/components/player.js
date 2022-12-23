@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player"
 import { useDispatch, useSelector } from "react-redux"
-
+import './player.css'
 
 
 const Player = () => {
@@ -10,12 +10,15 @@ const Player = () => {
     return (
         <div>
             <div className="music-container">
+            <div id="song-title">{currentSong.title}</div>
             <ReactPlayer
-            url={currentSong}
+            id='react-player'
+            url={currentSong.song_file || null}
+            preload="auto"
             controls={true}
             playing={true}
-            height={75}
-            width={1000}
+            height={65}
+            width='85%'
             />
 
             </div>

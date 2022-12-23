@@ -23,10 +23,10 @@ const MainPage = () => {
     const songs = useSelector(state => state.songs.songs)
 
 
-    const setAudioFile = (e) => {
+    const setAudioFile = (e, value) => {
         e.preventDefault();
-        console.log(e.target.id)
-        dispatch(setCurrentSong(e.target.id))
+        console.log(value)
+        dispatch(setCurrentSong(value))
     }
     const redirectToUserPage  = () => {
 
@@ -50,7 +50,7 @@ const MainPage = () => {
     }
 
     return (
-        <div>
+        <div id="page-container">
             <h1>Hip-Hop</h1>
             <div id="song-flex-box">
 
@@ -58,7 +58,7 @@ const MainPage = () => {
                 {songs && HiphopSongs && HiphopSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -71,7 +71,7 @@ const MainPage = () => {
                 {songs && RNBSongs && RNBSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -85,7 +85,7 @@ const MainPage = () => {
                 {songs && PopSongs && PopSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -99,7 +99,7 @@ const MainPage = () => {
                 {songs && MetalSongs && MetalSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -113,7 +113,7 @@ const MainPage = () => {
                 {songs && JazzSongs && JazzSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -127,7 +127,7 @@ const MainPage = () => {
                 {songs && CountrySongs && CountrySongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -141,7 +141,7 @@ const MainPage = () => {
                 {songs && EDMSongs && EDMSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}
@@ -155,7 +155,7 @@ const MainPage = () => {
                 {songs && RockSongs && RockSongs.map(song => (
                     <div id="song-card-container">
                         <button className="song-title" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
-                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
                         <button id="uploader-name" onClick={redirectToUserPage}>By: {song.user.username}</button>
                     </div>
                 ))}

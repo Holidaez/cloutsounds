@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-
+import './EditSong.css'
 
 
 
@@ -35,7 +35,7 @@ export default function EditSongsForm() {
 
     return (
         <div>
-            <div id="upload-song-container">
+            <div id="edit-song-container">
                 <form onSubmit={handleSubmit}>
                     <input
                     type='text'
