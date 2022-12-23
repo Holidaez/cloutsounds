@@ -16,9 +16,15 @@ def songs():
     songs = Song.query.all()
     song_list = []
     for song in songs:
+        comment_list=[]
+        if (song.comments):
+            for comment in song.comments:
+                comment_dict = comment.to_dict()
+                comment_list.append(comment_dict)
         song_dict = song.to_dict()
         user_dict = song.user.to_dict()
         song_dict['user'] = user_dict
+        song_dict['comments'] = comment_list
         song_list.append(song_dict)
     return {'songs':song_list}
 
