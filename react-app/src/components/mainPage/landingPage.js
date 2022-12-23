@@ -35,7 +35,7 @@ const MainPage = () => {
         e.preventDefault()
         console.log(value)
         let path = `/song/${value.id}`
-        dispatch(SelectTheSong(value))
+        // dispatch(SelectTheSong(value))
         history.push(path)
     }
     if (songs) {

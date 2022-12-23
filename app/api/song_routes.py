@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, json
 from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required
 from app.forms import SongForm
@@ -27,7 +27,6 @@ def songs():
         song_dict['comments'] = comment_list
         song_list.append(song_dict)
     return {'songs':song_list}
-
 
 
 @song_routes.route('/add', methods=['POST'])
@@ -65,7 +64,6 @@ def updateSong():
     """
     Edits a specific song by Song Id
     """
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", request)
     # songId = request.files['songId']
     form = SongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -77,3 +75,21 @@ def updateSong():
         returning_song = song_to_edit.to_dict()
         return returning_song
     return {'errors': validation_errors_to_error_messages(form.errors)},401
+
+@song_routes.route('/specific/song', methods=['POST'])
+def get_specific_song():
+    """
+    Gets a specific song by Song Id
+    """
+    #formData.get() request.body
+    songId = json.loads(request.data.decode('UTF-8'))
+    current_song = Song.query.filter(Song.id == songId['songId']).first()
+    returning_song = current_song.to_dict()
+    comment_list = []
+    if (current_song.comments):
+        for comment in current_song.comments:
+            comment_dict = comment.to_dict()
+            comment_list.append(comment_dict)
+    returning_song['comments'] = comment_list
+
+    return returning_song
