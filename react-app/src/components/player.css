@@ -1,0 +1,19 @@
+.music-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+#song-title{
+    padding-right: 10px;
+    /* border-right: 1px solid lightgray; */
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 5%;
+}
+#react-player {
+    width: 100%;
+}

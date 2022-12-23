@@ -1,0 +1,11 @@
+#login-form-container{
+    /* margin-top: 5%;
+    margin-bottom: 5%; */
+    margin: 5% auto;
+    width: 60%;
+}
+#login-form {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}

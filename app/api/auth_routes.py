@@ -24,7 +24,6 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",current_user)
         queried_user = User.query.get(current_user.id)
         user = current_user.to_dict()
         user['song_list']= [song.to_dict() for song in queried_user.songs]
