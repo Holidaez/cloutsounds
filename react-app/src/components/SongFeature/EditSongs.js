@@ -29,7 +29,7 @@ export default function EditSongsForm() {
         if(res.errors) {
             return alert(res.errors.map(error=>error))
         }else {
-            history.push('/')
+            history.push(`/song/${song.id}`)
         }
     }
 

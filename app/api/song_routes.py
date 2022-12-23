@@ -93,3 +93,11 @@ def get_specific_song():
     returning_song['comments'] = comment_list
 
     return returning_song
+
+
+@song_routes.route('/<id>', methods=['DELETE'])
+def delete_song(id):
+    todelete = Song.query.get(id)
+    db.session.delete(todelete)
+    db.session.commit()
+    return {"deleteMessage":'Song Successfully Deleted'}

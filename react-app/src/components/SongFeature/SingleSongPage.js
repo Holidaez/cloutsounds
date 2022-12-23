@@ -29,10 +29,27 @@ const SingleSongPage = () => {
         // dispatch(SelectTheSong(value))
         history.push(path)
     }
+    const deleteSong = async (e) => {
+        e.stopPropagation()
+        const response = await fetch(`/api/songs/${song.id}`, {
+            method:'DELETE'
+        })
+        if (response.ok){
+            const res = response.json()
+            if(res.errors) {
+                return alert(res.errors.map(error => error))
+            }else{
+                history.push('/')
+            }
+        }
+    }
     return (
         <div id="song-page-container">
             {song && song.user_id == user.id &&(
+                <div>
                 <button onClick={(e) => redirectToSongEdit(e, song)}>Edit Song</button>
+                <button onClick={(e) => deleteSong(e)}>Delete Song</button>
+                </div>
             )}
 
             <div id="song-header-container">
