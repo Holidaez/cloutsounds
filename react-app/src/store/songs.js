@@ -18,7 +18,6 @@ export const getSongs = () => async (dispatch) => {
     }else throw new Error("Bad Request")
 }
 
-
 //Reducer
 
 export default function songsReducer(state = {}, action) {

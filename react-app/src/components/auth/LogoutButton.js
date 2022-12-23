@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
-  const onLogout = async (e) => {
-    await dispatch(logout());
-  };
+  useEffect( async () => {
+      await dispatch(logout());
 
-  return <button onClick={onLogout}>Logout</button>;
+  },[])
+
+  return <h1>Logging Out</h1>;
 };
 
 export default LogoutButton;

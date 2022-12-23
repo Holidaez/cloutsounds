@@ -9,6 +9,12 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import MainPage from './components/mainPage/landingPage';
+import FilePlayer from 'react-player/file';
+import Player from './components/player';
+import SongUploadForm from './components/SongFeature/UploadSong';
+import EditSongsForm from './components/SongFeature/EditSongs';
+import SingleSongPage from './components/SongFeature/SingleSongPage';
+import LogoutButton from './components/auth/LogoutButton';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +34,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Player />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -41,8 +48,20 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path='/song/:songId' exact={true}>
+          <SingleSongPage/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/upload' exact={true}>
+          <SongUploadForm/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/edit/:songId' exact={true}>
+          <EditSongsForm/>
+        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/logout' exact={true}>
+          <LogoutButton/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
