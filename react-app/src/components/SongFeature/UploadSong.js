@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-
+import './UploadSong.css'
 
 
 
@@ -41,19 +41,24 @@ const SongUploadForm = () => {
     }
     return (
         <div>
-            <div id="upload-song-container">
-                <form onSubmit={handleSubmit}>
+            <div id="upload-song-container" >
+                <form onSubmit={handleSubmit} id='upload-song-form-container'>
+                    <div>Title</div>
                     <input
+                    id="upload-song-form-title"
                     type='text'
                     placeholder="Song Title"
                     value={songTitle}
                     onChange={e=>setSongTitle(e.target.value)}
                     />
                     <input
+                    id="upload-song-file"
                     type="file"
+                    title=" "
                     accept="audio/*"
                     onChange={updateSong}
                     />
+                    <div>Genre</div>
                     <select
                     id="song-genre"
                     value={genre}
@@ -68,7 +73,7 @@ const SongUploadForm = () => {
                         <option value={"Country"}>Country</option>
                         <option value={"RNB"}>RNB</option>
                     </select>
-                    <button type="submit">Upload Song</button>
+                    <button type="submit" id="submit-upload-song">Upload Song</button>
                 </form>
             </div>
         </div>

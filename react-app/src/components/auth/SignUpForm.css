@@ -1,9 +1,9 @@
-#edit-song-container {
+#signup-form-container{
     margin-top: 5%;
     margin-bottom: 5%;
 }
 
-#edit-song-form-container {
+#signup-form{
     margin: 0 auto;
     width: 30em;
     padding-top: 5em;
@@ -14,8 +14,7 @@
     flex-direction: column;
 }
 
-#edit-song-form-title {
-    /* padding-bottom: 20px; */
+#signup-username{
     height: 40px;
     text-align: center;
     justify-content: center;
@@ -26,22 +25,41 @@
     border: #FF5500;
 }
 
-#edit-song-form-title::placeholder {
+#signup-username::placeholder{
     color: white;
 }
 
-#song-genre {
+#signup-email{
     height: 40px;
     text-align: center;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border-radius: 5px;
     background-color: #FF5500;
     color: white;
     border: #FF5500;
 }
 
-#submit-edit-song{
+#signup-email::placeholder{
+    color: white;
+}
+
+#signup-password{
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #FF5500;
+    color: white;
+    border: #FF5500;
+}
+
+#signup-password::placeholder{
+    color: white;
+}
+
+#signup-submit {
     background-color: #FF5500;
     border: none;
     border-radius: 5px;
@@ -51,3 +69,5 @@
     margin: auto;
     padding: 7px;
 }
+
+

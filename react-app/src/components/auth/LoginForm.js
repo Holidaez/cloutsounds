@@ -29,7 +29,13 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
-
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io','password'))
+    if(data) {
+      setErrors(data)
+    }
+  }
   return (
     <div id='login-form-container'>
       <form onSubmit={onLogin} id='login-form'>
@@ -39,28 +45,27 @@ const LoginForm = () => {
           ))}
         </div>
         <div>Email</div>
-        <div>
-          <label htmlFor='email'></label>
           <input
+            id='form-email'
             name='email'
             type='text'
             placeholder='Email'
             value={email}
             onChange={updateEmail}
           />
-        </div>
         <div>Password</div>
-        <div>
-          <label htmlFor='password'></label>
           <input
+            id='form-password'
             name='password'
             type='password'
             placeholder='Password'
             value={password}
             onChange={updatePassword}
           />
-        </div>
-          <button type='submit'>Login</button>
+          <div id='login-buttons'>
+          <button type='submit' id='login-form-submit'>Login</button>
+          <button id='demo-login' onClick={demoLogin}>Demo User</button>
+          </div>
       </form>
     </div>
   );
