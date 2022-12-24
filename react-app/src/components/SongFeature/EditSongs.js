@@ -36,13 +36,16 @@ export default function EditSongsForm() {
     return (
         <div>
             <div id="edit-song-container">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} id='edit-song-form-container'>
+                    <div>Title</div>
                     <input
+                    id="edit-song-form-title"
                     type='text'
                     placeholder="Song Title"
                     value={songTitle}
                     onChange={e=>setSongTitle(e.target.value)}
                     />
+                    <div>Genre</div>
                     <select
                     id="song-genre"
                     value={genre}
@@ -57,7 +60,7 @@ export default function EditSongsForm() {
                         <option value={"Country"}>Country</option>
                         <option value={"RNB"}>RNB</option>
                     </select>
-                    <button type="submit">Edit Song</button>
+                    <button type="submit" id="submit-edit-song">Edit Song</button>
                 </form>
             </div>
         </div>

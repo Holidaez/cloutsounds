@@ -21,7 +21,8 @@
     left: 0;
     z-index: 3;
     margin: auto;
-    
+    /* bottom: 0; */
+
 }
 #nav-nav-container {
     background-color: #333333;
@@ -34,6 +35,7 @@
     height: 50px;
     display: flex;
     justify-content: center;
+    /* bottom: 0; */
 }
 #nav-li {
     list-style: none;
