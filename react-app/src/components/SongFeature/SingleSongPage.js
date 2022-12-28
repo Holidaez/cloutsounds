@@ -39,9 +39,29 @@ const SingleSongPage = () => {
             if(res.errors) {
                 return alert(res.errors.map(error => error))
             }else{
-                history.push('/')
+                history.push(`/song/${songId}`)
             }
         }
+    }
+    const deleteComment = async (e,commentId) => {
+        e.stopPropagation()
+        const response = await fetch(`/api/comments/${commentId}`, {
+            method:'DELETE'
+        })
+        if (response.ok){
+            const res = response.json()
+            if(res.errors) {
+                return alert(res.errors.map(error => error))
+            }else{
+                history.push('/api/')
+            }
+        }
+    }
+    const redirectToAddComment = (e) => {
+        e.preventDefault()
+        console.log(songId)
+        const path = `/comment/add/${songId}`
+        history.push(path)
     }
     return (
         <div id="song-page-container">
@@ -49,6 +69,7 @@ const SingleSongPage = () => {
                 <div>
                 <button onClick={(e) => redirectToSongEdit(e, song)}>Edit Song</button>
                 <button onClick={(e) => deleteSong(e)}>Delete Song</button>
+                <button onClick={(e) => redirectToAddComment(e)}>Add Comment</button>
                 </div>
             )}
 
@@ -60,7 +81,7 @@ const SingleSongPage = () => {
             {song && song.comments &&(
                 <div>
                 <h3> Comments </h3>
-                {song.comments.map(comment => <div>{comment.comment_text}</div>)}
+                {song.comments.map(comment => <div><button id={comment.id} onClick={(e) => deleteComment(e)}>deleteComment</button>{comment.comment_text}</div>)}
                 </div>
             )}
 
