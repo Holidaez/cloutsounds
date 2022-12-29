@@ -28,3 +28,23 @@ def add_comment():
     db.session.commit()
     return {'comment':'new_comment'}
     # return {'errors': validation_errors_to_error_messages(form.errors)},400
+
+@comment_routes.route('/edit/<id>', methods=['PUT'])
+def updateComment(id):
+    """
+    edits a specific comment by comment Id
+    """
+    comment = json.loads(request.data.decode('UTF-8'))
+    if (len(comment['commentText'])) > 70 or (len(comment['commentText']) < 3):
+        return {'errors':['Comments must be between 3 and 70 characters']},400
+    comment_to_edit = Comment.query.get(id)
+    comment_to_edit.comment_text = comment['commentText']
+    db.session.commit()
+    return {'Message':'Comment successfully edited'}
+
+@comment_routes.route('/<id>', methods=['DELETE'])
+def delete_comment(id):
+    todelete = Comment.query.get(id)
+    db.session.delete(todelete)
+    db.session.commit()
+    return {"delteMessage":'Comment Successfully Deleted'}

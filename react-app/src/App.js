@@ -16,6 +16,7 @@ import EditSongsForm from './components/SongFeature/EditSongs';
 import SingleSongPage from './components/SongFeature/SingleSongPage';
 import LogoutButton from './components/auth/LogoutButton';
 import CreateComment from './components/commentsFeature/CreateComments';
+import EditComment from './components/commentsFeature/EditComments';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -65,6 +66,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/comment/add/:songId' exact={true}>
           <CreateComment />
+        </ProtectedRoute>
+        <ProtectedRoute path='/comment/edit/:commentId' exact={true}>
+          <EditComment />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
