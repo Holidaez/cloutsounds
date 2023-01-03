@@ -20,10 +20,11 @@ const SingleSongPage = () => {
         }
         await dispatch(getTheSelectedSong(testName))
     }, [commentDeleting])
-    const setAudioFile = (e) => {
+
+    const setAudioFile = (e, value) => {
         e.preventDefault();
-        console.log(e.target.id)
-        dispatch(setCurrentSong(e.target.id))
+        console.log(value)
+        dispatch(setCurrentSong(value))
     }
     const redirectToSongEdit = (e, value) => {
         e.preventDefault()
@@ -32,6 +33,7 @@ const SingleSongPage = () => {
         // dispatch(SelectTheSong(value))
         history.push(path)
     }
+    
     const deleteSong = async (e) => {
         e.stopPropagation()
         const response = await fetch(`/api/songs/${song.id}`, {
@@ -86,7 +88,7 @@ const SingleSongPage = () => {
 
             <div id="song-header-container">
             <h2>{song.title}</h2>
-            <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+            <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
             </div>
 
             {song && song.comments &&(

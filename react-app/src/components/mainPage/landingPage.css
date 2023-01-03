@@ -6,7 +6,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
-#song-card-container {
+.song-card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,16 +15,40 @@
     /* overflow-x: scroll; */
     min-width: 170px;
     min-height: 170px;
+    border-radius: 20px;
     margin: 1%;
 }
-
-#uploader-name {
-    border: none;
+.hip-hop {
+    background-color: darkblue;
+}
+.rnb {
+    background-color: blue;
+}
+.pop {
     background-color: purple;
+}
+.metal {
+    background-color: rgb(128, 125, 125);
+}
+.jazz {
+    background-color: pink;
+}
+.country {
+    background-color: brown;
+}
+.edm {
+    background-color: silver;
+}
+.rock {
+    background-color: red;
+}
+
+.uploader-name {
+    border: none;
     color: white;
     margin-bottom: 10px;
 }
-#uploader-name:hover {
+.uploader-name:hover {
     cursor: pointer;
 }
 
@@ -32,7 +56,6 @@
     font-size: 20px;
     margin-top: 10px;
     border: none;
-    background-color: purple;
     color: white;
 }
 .song-title:hover {
@@ -40,14 +63,14 @@
 }
 
 .button-img-container {
-    background-color: purple;
     margin-top: 10px;
     margin-bottom: 10px;
     border: none;
+    /* color: white; */
 }
 
 .play-button-img {
-    width: 25px;
+    width: 35px;
     color: white;
 }
 #page-container {
