@@ -12,8 +12,9 @@
     align-items: center;
     justify-content: center;
     background-color: purple;
-    min-width: 20%;
-    min-height: 5%;
+    /* overflow-x: scroll; */
+    min-width: 170px;
+    min-height: 170px;
     margin: 1%;
 }
 
@@ -50,6 +51,8 @@
     color: white;
 }
 #page-container {
+    width: 60%;
     margin-top: 5%;
     margin-bottom: 6%;
+    padding-left: 15%;
 }

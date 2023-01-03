@@ -1,9 +1,9 @@
-#edit-song-container {
+#upload-song-container{
     margin-top: 5%;
     margin-bottom: 5%;
 }
 
-#edit-song-form-container {
+#upload-song-form-container{
     margin: 0 auto;
     width: 30em;
     padding-top: 5em;
@@ -14,34 +14,41 @@
     flex-direction: column;
 }
 
-#edit-song-form-title {
+#upload-song-form-title {
     /* padding-bottom: 20px; */
     height: 40px;
     text-align: center;
     justify-content: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color: #FF5500;
+    color: white;
+    border: #FF5500;
+}
+#upload-song-form-title::placeholder {
+    color: white;
+}
+
+#upload-song-file{
+    /* width: 50%; */
+    /* margin: auto; */
+    overflow: hidden;
+    height: 50px;
+    /* color: transparent; */
     margin-bottom: 20px;
-    border-radius: 5px;
+}
+
+#upload-song-file::file-selector-button{
+    color: white;
     background-color: #FF5500;
-    color: white;
     border: #FF5500;
-}
-
-#edit-song-form-title::placeholder {
-    color: white;
-}
-
-#song-genre {
+    text-decoration: none;
     height: 40px;
-    text-align: center;
-    justify-content: center;
-    margin-bottom: 25px;
+    padding: 10px;
     border-radius: 5px;
-    background-color: #FF5500;
-    color: white;
-    border: #FF5500;
 }
 
-#submit-edit-song{
+#submit-upload-song {
     background-color: #FF5500;
     border: none;
     border-radius: 5px;
