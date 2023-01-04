@@ -50,6 +50,7 @@ const SongUploadForm = () => {
                     placeholder="Song Title"
                     value={songTitle}
                     required={true}
+                    maxLength={20}
                     onChange={e=>setSongTitle(e.target.value)}
                     />
                     <input
