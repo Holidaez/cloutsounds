@@ -58,9 +58,9 @@ function App() {
         <ProtectedRoute path='/edit/:songId' exact={true}>
           <EditSongsForm/>
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           <MainPage />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path='/logout' exact={true}>
           <LogoutButton/>
         </ProtectedRoute>
