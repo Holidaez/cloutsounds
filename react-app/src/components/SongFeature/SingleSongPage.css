@@ -1,4 +1,103 @@
 #song-page-container{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    width: 60%;
+    margin-top: 4.2%;
+    margin-bottom: 6%;
+    padding-left: 15%;
+}
+.song-header-container {
+    display: flex;
+    background-color: gray;
+    justify-content: space-between;
+}
+.button-img-container-single {
+    background-color: gray;
+    border: none;
+    width: 35px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+#song-name {
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+#name-play-container {
+    display: flex;
+}
+#song-genre-single {
+    padding-right: 15px;
+    color: white;
+}
+.hip-hop {
+    background-color: darkblue;
+}
+.rnb {
+    background-color: blue;
+}
+.pop {
+    background-color: purple;
+}
+.metal {
+    background-color: rgb(128, 125, 125);
+}
+.jazz {
+    background-color: pink;
+}
+.country {
+    background-color: brown;
+}
+.edm {
+    background-color: silver;
+}
+.rock {
+    background-color: red;
+}
+
+#comment-block-single {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding-bottom: 15px;
+    padding-left: 10%;
+}
+.comment-button {
+    width: fit-content;
+    border-radius: 4px;
+    background-color: #FF5500;
+    color: white;
+    border: #FF5500;
+    margin-top: 4px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+#comment-text {
+    min-width: 80%;
+    min-height: 27px;
+    margin: auto;
+    padding-left: 5px;
+}
+#create-a-comment-form-container{
+    margin: auto;
+    padding-left: 15%;
+    padding-top: 30px;
+}
+
+.no-comment-button {
+    display: none;
+}
+
+.redirect-buttons-single {
+    background-color: #FF5500;
+    color: white;
+    border: 2px solid #FF5500;
+    /* margin-right: 5px; */
+    margin-top: none;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.redirect-button-container-div {
+    display: flex;
+    justify-content: space-between;
 }

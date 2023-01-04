@@ -89,6 +89,8 @@ def get_specific_song():
     if (current_song.comments):
         for comment in current_song.comments:
             comment_dict = comment.to_dict()
+            comment_user = comment.user.to_dict()
+            comment_dict['username'] = comment_user.get('username')
             comment_list.append(comment_dict)
     returning_song['comments'] = comment_list
 
