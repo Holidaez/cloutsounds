@@ -40,7 +40,7 @@ def add_song():
     audio = request.files["audio"]
     if not allowed_file(audio.filename):
         print("INSIDE OF ALLOWED FILE ERROR")
-        return {"errors": "file type not permitted"},400
+        return {"errors": "File type not permitted"},400
     audio.filename = get_unique_filename(audio.filename)
 
     upload = upload_file_to_s3(audio)

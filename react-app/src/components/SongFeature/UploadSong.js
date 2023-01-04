@@ -32,7 +32,9 @@ const SongUploadForm = () => {
             history.push('/')
         }else {
             setSongLoading(false)
-            console.log('error')
+            const res = await response.json()
+            console.log(res.errors)
+            alert(res.errors)
         }
     }
     const updateSong = (e) => {
