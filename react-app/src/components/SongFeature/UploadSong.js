@@ -49,6 +49,8 @@ const SongUploadForm = () => {
                     type='text'
                     placeholder="Song Title"
                     value={songTitle}
+                    required={true}
+                    maxLength={20}
                     onChange={e=>setSongTitle(e.target.value)}
                     />
                     <input
@@ -56,12 +58,14 @@ const SongUploadForm = () => {
                     type="file"
                     title=" "
                     accept="audio/*"
+                    required={true}
                     onChange={updateSong}
                     />
                     <div>Genre</div>
                     <select
                     id="song-genre"
                     value={genre}
+                    required={true}
                     onChange={e => setGenre(e.target.value)}
                     >
                         <option value={"Hip-Hop"}>Hip-Hop</option>

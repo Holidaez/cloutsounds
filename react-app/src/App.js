@@ -17,6 +17,7 @@ import SingleSongPage from './components/SongFeature/SingleSongPage';
 import LogoutButton from './components/auth/LogoutButton';
 import CreateComment from './components/commentsFeature/CreateComments';
 import EditComment from './components/commentsFeature/EditComments';
+import FourOFour from './components/FourOFour';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -70,6 +71,9 @@ function App() {
         <ProtectedRoute path='/comment/edit/:commentId' exact={true}>
           <EditComment />
         </ProtectedRoute>
+        <Route path='*'>
+          <FourOFour/>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
