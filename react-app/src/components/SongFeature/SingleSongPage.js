@@ -12,6 +12,7 @@ const SingleSongPage = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const { songId } = useParams()
+    const playingSong = useSelector(state => state.currentSong)
     const song = useSelector(state => state.selectedSong)
     const commentList = useSelector(state => state.selectedSong.comments)
     const user = useSelector(state => state.session.user)
@@ -36,6 +37,10 @@ const SingleSongPage = () => {
 
     const deleteSong = async (e) => {
         e.stopPropagation()
+        e.preventDefault()
+        if (playingSong.id == song.id){
+            dispatch(setCurrentSong(''))
+        }
         const response = await fetch(`/api/songs/${song.id}`, {
             method: 'DELETE'
         })
