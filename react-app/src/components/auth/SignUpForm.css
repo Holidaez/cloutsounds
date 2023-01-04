@@ -69,7 +69,9 @@
     margin: auto;
     padding: 7px;
 }
-
+#signup-submit:hover{
+    cursor: pointer;
+}
 .errors {
     color: red;
     font-weight: bold;

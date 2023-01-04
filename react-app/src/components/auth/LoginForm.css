@@ -54,7 +54,9 @@
     margin: auto;
     padding: 7px;
 }
-
+#login-form-submit:hover{
+    cursor: pointer;
+}
 #demo-login {
     background-color: #FF5500;
     border: none;
@@ -65,7 +67,9 @@
     margin: auto;
     padding: 7px;
 }
-
+#demo-login:hover{
+    cursor: pointer;
+}
 #login-buttons {
     display: flex;
   flex-direction: row;
