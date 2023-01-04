@@ -1,4 +1,31 @@
 #edit-comment-form-container {
     margin-top: 5%;
     margin-bottom: 5%;
+    /* width: 60%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment-text-edit {
+    /* text-align: center; */
+    padding: 5px;
+    height: 40px;
+    min-width: 300px;
+    background-color: #FF5500;
+    border: #FF5500;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#submit-updated-comment {
+    background-color: #FF5500;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: #FF5500;
+    font-size: 14px;
 }
