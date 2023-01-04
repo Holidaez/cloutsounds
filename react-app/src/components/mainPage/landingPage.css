@@ -48,9 +48,7 @@
     color: white;
     margin-bottom: 10px;
 }
-.uploader-name:hover {
-    cursor: pointer;
-}
+
 
 .song-title {
     font-size: 20px;
@@ -68,14 +66,36 @@
     border: none;
     /* color: white; */
 }
-
+.button-img-container {
+    cursor: pointer;
+}
 .play-button-img {
     width: 35px;
     color: white;
+}
+.play-button-img:hover{
+    cursor: pointer;
 }
 #page-container {
     width: 60%;
     margin-top: 5%;
     margin-bottom: 6%;
     padding-left: 15%;
+}
+#about-me {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 10%;
+    right: 10%;
+}
+#dev-names {
+    text-decoration: none;
+    color: black;
+}
+#about-me-h3 {
+    text-decoration: underline;
+    padding: 0px;
+    margin: 0;
 }

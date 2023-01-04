@@ -16,6 +16,9 @@
     padding-right: 10px;
     margin-right: 10px;
 }
+.button-img-container-single:hover{
+    cursor: pointer;
+}
 #song-name {
     background-color: black;
     color: white;
@@ -70,7 +73,9 @@
     margin-right: 5px;
     padding: 5px;
 }
-
+.comment-button:hover{
+    cursor: pointer;
+}
 #comment-text {
     min-width: 80%;
     min-height: 27px;
@@ -96,6 +101,9 @@
     padding: 5px;
     border-radius: 5px;
     font-size: 14px;
+}
+.redirect-buttons-single:hover{
+    cursor: pointer;
 }
 .redirect-button-container-div {
     display: flex;

@@ -14,6 +14,7 @@ const NavBar = () => {
       <ul id='nav-container'>
         <li id='nav-li'>
           <NavLink to='/' exact={true} activeClassName='active' id='nav-button'>
+            {/* <img src='/soundcloud-icon.png'></img> */}
             Home
           </NavLink>
         </li >

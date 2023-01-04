@@ -58,7 +58,7 @@ const MainPage = () => {
                     <div id="hip-hop" className="song-card-container hip-hop">
                         <button className="song-title hip-hop" id={song} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container hip-hop" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button-white.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name hip-hop" id="hip-hop" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name hip-hop" id="hip-hop">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -69,7 +69,7 @@ const MainPage = () => {
                     <div className="song-card-container rnb" id="rnb">
                         <button className="song-title rnb" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container rnb" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button-white.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name rnb" id="rnb" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name rnb" id="rnb">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -80,7 +80,7 @@ const MainPage = () => {
                     <div className="song-card-container pop" id="pop">
                         <button className="song-title pop" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container pop" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button-white.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name pop" id="pop" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name pop" id="pop">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -91,7 +91,7 @@ const MainPage = () => {
                     <div className="song-card-container metal" id="metal">
                         <button className="song-title metal" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container metal" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name metal" id="metal" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name metal" id="metal">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -102,7 +102,7 @@ const MainPage = () => {
                     <div className="song-card-container jazz" id="jazz">
                         <button className="song-title jazz" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container jazz" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name jazz" id="jazz" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name jazz" id="jazz">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -113,7 +113,7 @@ const MainPage = () => {
                     <div className="song-card-container country" id="country">
                         <button className="song-title country" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container country" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name country" id="country" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name country" id="country">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -124,7 +124,7 @@ const MainPage = () => {
                     <div className="song-card-container edm" id="edm">
                         <button className="song-title edm" id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container edm" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name edm" id="edm" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name edm" id="edm">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
@@ -135,10 +135,16 @@ const MainPage = () => {
                     <div className="song-card-container rock" id="rock">
                         <button className="song-title rock"  id={song.id} onClick={(e) => redirectToSongPage(e, song)}>{song.title}</button>
                         <button id={song.song_file} className="button-img-container rock" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
-                        <button className="uploader-name rock" id="rock" onClick={redirectToUserPage}>By: {song.user.username}</button>
+                        <div className="uploader-name rock" id="rock">By: {song.user.username}</div>
                     </div>
                 ))}
             </div>
+        <div id="about-me">
+            <h3 id="about-me-h3">About Me</h3>
+            <div>Keegan A</div>
+            <a href="https://github.com/Holidaez" target="_blank" id="dev-names">Github</a>
+            <a href="https://www.linkedin.com/in/keegan-abley-a12099162/" target="_blank" id="dev-names">Linkedin</a>
+        </div>
         </div>
     )
 }
