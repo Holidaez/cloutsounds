@@ -42,10 +42,10 @@ const CreateComment = () => {
             <div id="comment-form-container">
                 <form onSubmit={handleSubmit} id="create-a-comment-form-container">
                     <div>Comment</div>
-                    <textarea
+                    <input
                     id="comment-text"
                     type='text'
-                    placeholder='Add Comment'
+                    placeholder='Write A Comment'
                     onChange={e => setCommentText(e.target.value)} />
                 <button type="submit" id="submit-comment">Create Comment</button>
                 </form>

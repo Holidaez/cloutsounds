@@ -1,8 +1,10 @@
-import { useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { setCurrentSong } from "../../store/currentSong"
 import { getTheSelectedSong, SelectTheSong } from "../../store/selectedSong"
+import CreateComment from "../commentsFeature/CreateComments"
+import IndividualComments from "../commentsFeature/IndivdualComments"
 
 import './SingleSongPage.css'
 
@@ -20,79 +22,166 @@ const SingleSongPage = () => {
         }
         await dispatch(getTheSelectedSong(testName))
     }, [commentDeleting])
-    const setAudioFile = (e) => {
+    const setAudioFile = (e, value) => {
         e.preventDefault();
-        console.log(e.target.id)
-        dispatch(setCurrentSong(e.target.id))
+        console.log(value)
+        dispatch(setCurrentSong(value))
     }
     const redirectToSongEdit = (e, value) => {
         e.preventDefault()
         console.log(value)
         let path = `/edit/${value.id}`
-        // dispatch(SelectTheSong(value))
         history.push(path)
     }
+
     const deleteSong = async (e) => {
         e.stopPropagation()
         const response = await fetch(`/api/songs/${song.id}`, {
-            method:'DELETE'
+            method: 'DELETE'
         })
-        if (response.ok){
+        if (response.ok) {
             const res = response.json()
-            if(res.errors) {
+            if (res.errors) {
                 return alert(res.errors.map(error => error))
-            }else{
+            } else {
 
-                history.push(`/song/${songId}`)
+                history.push(`/`)
             }
         }
     }
-    //! Comments
-    const deleteComment = async (e) => {
-        e.stopPropagation()
+    const userId = useSelector(state => state.session.user.id)
+    const [commentText, setCommentText] = useState('')
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         setCommentDeleting(true)
-        const response = await fetch(`/api/comments/${e.target.id}`, {
-            method:'DELETE'
-        })
-        if (response.ok){
-            const res = response.json()
-            if(res.errors) {
-                return alert(res.errors.map(error => error))
-            }else{
-                setCommentDeleting(false)
-            }
+        const commentz = {
+            songId: parseInt(songId),
+            userId: userId,
+            commentText: commentText
         }
-    }
-    const redirectToEditComment = (e) => {
-        e.preventDefault()
-        const path = `/comment/edit/${e.target.id}`
-        history.push(path)
-    }
-    const redirectToAddComment = (e) => {
-        e.preventDefault()
-        console.log(songId)
-        const path = `/comment/add/${songId}`
-        history.push(path)
+        console.log(JSON.stringify(commentz))
+        const response = await fetch('/api/comments/add', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commentz)
+        })
+        const res = await response.json()
+        console.log(res)
+        if (res.errors) {
+            return alert(res.errors.map(error => error))
+        } else {
+            setCommentText('')
+            setCommentDeleting(false)
+        }
     }
     return (
         <div id="song-page-container">
-            {song && song.user_id == user.id &&(
-                <div>
-                <button onClick={(e) => redirectToSongEdit(e, song)}>Edit Song</button>
-                <button onClick={(e) => deleteSong(e)}>Delete Song</button>
-                <button onClick={(e) => redirectToAddComment(e)}>Add Comment</button>
+
+            {song.genre === 'Hip-Hop' && (
+                <div className="song-header-container hip-hop">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single hip-hop" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
                 </div>
             )}
-
-            <div id="song-header-container">
-            <h2>{song.title}</h2>
-            <button id={song.song_file} className="button-img-container" onClick={(e) => setAudioFile(e)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
-            </div>
-
-            {song && song.comments &&(
+            {song.genre === 'RNB' && (
+                <div className="song-header-container rnb">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single rnb" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            {song.genre === 'Metal' && (
+                <div className="song-header-container metal">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single metal" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            {song.genre === 'Pop' && (
+                <div className="song-header-container pop">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single pop" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            {song.genre === 'Jazz' && (
+                <div className="song-header-container jazz">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single jazz" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            {song.genre === 'Country' && (
+                <div className="song-header-container country">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single country" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            {song.genre === 'EDM' && (
+                <div className="song-header-container edm">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single edm" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            {song.genre === 'Rock' && (
+                <div className="song-header-container rock">
+                    <div id="name-play-container">
+                        <button id={song.song_file} className="button-img-container-single rock" onClick={(e) => setAudioFile(e, song)}><img src="/buttonImgs/play-button.png" id={song.song_file} className='play-button-img'></img></button>
+                        <h2 id="song-name">{song.title}</h2>
+                    </div>
+                    <h2 id="song-genre-single">{song.genre}</h2>
+                </div>
+            )}
+            <div>
+                {song && song.user_id == user.id && (
+                    <div className="redirect-button-container-div">
+                        <button className='redirect-buttons-single' onClick={(e) => redirectToSongEdit(e, song)}>Edit Song</button>
+                        <button className='redirect-buttons-single' onClick={(e) => deleteSong(e)}>Delete Song</button>
+                    </div>
+                )}
+                {            //! Create A Comment
+                }
                 <div>
-                <h3> Comments </h3>
-                {song.comments.map(comment => <div>{comment.user_id === user.id &&(<div><button id={comment.id} onClick={(e) => deleteComment(e)}>deleteComment</button><button id={comment.id} onClick={(e) =>  redirectToEditComment(e)}>Edit Comment</button></div>)}{comment.comment_text}</div>)}
+                    <div id="comment-form-container">
+                        <form onSubmit={handleSubmit} id="create-a-comment-form-container">
+                            <div className=''></div>
+                            <input
+                                id="comment-text"
+                                type='text'
+                                value={commentText}
+                                placeholder='Write A Comment'
+                                onChange={e => setCommentText(e.target.value)} />
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            {song && song.comments && (
+                <div>
+                    <h3> {song.comments.length} Comments </h3>
+                    {song.comments.map(comment =>
+                        <IndividualComments comment={comment} user={user} songId={songId}/>
+                    )}
+
                 </div>
             )}
 
