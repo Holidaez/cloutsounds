@@ -35,14 +35,17 @@ const EditComment = () => {
         <div>
             <div id="edit-comment-form-container">
                 <form onSubmit={handleSubmit} id='edit-comment-form-container'>
-                    <div>Comment</div>
-                    <textarea
-                    id='comment-text'
+                    <div>
+
+                    <div>Your Comment</div>
+                    <input
+                    id='comment-text-edit'
                     type='text'
                     placeholder="Add Comment"
                     value={commentText}
                     onChange={e => setCommentText(e.target.value)}
-                    ></textarea>
+                    />
+                    </div>
                     <button type="submit" id="submit-updated-comment">Update Comment</button>
                 </form>
             </div>

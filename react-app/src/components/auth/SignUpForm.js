@@ -13,12 +13,25 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
+
     e.preventDefault();
-    if (password === repeatPassword) {
+    const error = []
+    if (password != repeatPassword) {
+      error.push('Password Does Not match')
+    }
+    if (username.length < 5) {
+      error.push('Username must be at least 5 characters')
+    }
+    if (password.length < 6) {
+      error.push('Password must be at least 6 characters')
+    }
+    if(errors.length === 0 && password === repeatPassword){
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
       }
+    }else {
+      setErrors(error)
     }
   };
 
@@ -44,12 +57,12 @@ const SignUpForm = () => {
 
   return (
     <div id='signup-form-container'>
-    <form onSubmit={onSignUp} id='signup-form'>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+      <form onSubmit={onSignUp} id='signup-form'>
+        <div className='errors'>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
         <div>Username</div>
         <input
           id='signup-username'
@@ -58,16 +71,20 @@ const SignUpForm = () => {
           placeholder='Username'
           onChange={updateUsername}
           value={username}
+          required={true}
+          maxLength={20}
         ></input>
 
         <div>Email</div>
         <input
           id='signup-email'
-          type='text'
+          type='email'
           name='email'
           placeholder='Email'
           onChange={updateEmail}
           value={email}
+          required={true}
+          maxLength={50}
         ></input>
         <div>Password</div>
         <input
@@ -77,6 +94,7 @@ const SignUpForm = () => {
           placeholder='Password'
           onChange={updatePassword}
           value={password}
+          required={true}
         ></input>
         <div>Repeat Password</div>
         <input
@@ -88,8 +106,8 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         ></input>
-      <button type='submit' id='signup-submit'>Sign Up</button>
-    </form>
+        <button type='submit' id='signup-submit'>Sign Up</button>
+      </form>
     </div>
   );
 };
