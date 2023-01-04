@@ -29,9 +29,6 @@ const MainPage = () => {
         dispatch(setCurrentSong(value))
     }
 
-    const redirectToUserPage  = () => {
-
-    }
     const redirectToSongPage = (e, value) => {
         e.preventDefault()
         console.log(value)
