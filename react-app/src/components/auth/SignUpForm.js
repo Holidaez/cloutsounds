@@ -25,7 +25,7 @@ const SignUpForm = () => {
     if (password.length < 6) {
       error.push('Password must be at least 6 characters')
     }
-    if(errors.length === 0 && password === repeatPassword){
+    if(error.length === 0 && password === repeatPassword){
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
