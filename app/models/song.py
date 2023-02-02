@@ -18,6 +18,7 @@ class Song(db.Model):
     playlist = db.relationship('Playlist', back_populates='songs')
     album = db.relationship('Album',back_populates='songs')
     comments = db.relationship('Comment', back_populates='song')
+    likes = db.relationship('Like', back_populates='song')
 
     def to_dict(self):
         return {

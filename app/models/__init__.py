@@ -5,3 +5,4 @@ from .album import Album
 from .comment import Comment
 from .playlist import Playlist
 from .song import Song
+from .likes import Like
