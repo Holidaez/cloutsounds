@@ -86,14 +86,21 @@ def get_specific_song():
     current_song = Song.query.filter(Song.id == songId['songId']).first()
     returning_song = current_song.to_dict()
     comment_list = []
+    like_list = []
     if (current_song.comments):
         for comment in current_song.comments:
             comment_dict = comment.to_dict()
             comment_user = comment.user.to_dict()
             comment_dict['username'] = comment_user.get('username')
             comment_list.append(comment_dict)
+    if (current_song.likes):
+        for like in current_song.likes:
+            like_dict = like.to_dict()
+            like_user = like.user.to_dict()
+            like_dict['user'] = like_user
+            like_list.append(like_dict)
     returning_song['comments'] = comment_list
-
+    returning_song['likes'] = like_list
     return returning_song
 
 

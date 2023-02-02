@@ -34,11 +34,10 @@ const SingleSongPage = () => {
         let path = `/edit/${value.id}`
         history.push(path)
     }
-
     const deleteSong = async (e) => {
         e.stopPropagation()
         e.preventDefault()
-        if (playingSong.id == song.id){
+        if (playingSong.id == song.id) {
             dispatch(setCurrentSong(''))
         }
         const response = await fetch(`/api/songs/${song.id}`, {
@@ -79,6 +78,50 @@ const SingleSongPage = () => {
         } else {
             setCommentText('')
             setCommentDeleting(false)
+        }
+    }
+    //! Likes CRUD
+    let liked;
+    if (song.likes) {
+        liked = song.likes.filter(song => song.user_id === userId)
+        console.log(liked)
+    }
+    const likeSong = async (e) => {
+        e.preventDefault()
+        setCommentDeleting(true)
+        const like = {
+            songId: parseInt(songId),
+            userId: userId
+        }
+        const response = await fetch('/api/likes/add', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'applicaiton/json'
+            },
+            body: JSON.stringify(like)
+        })
+        const res = await response.json()
+        if (res.errors) {
+            return alert(res.errors.map(error => error))
+        } else {
+            setCommentDeleting(false)
+        }
+    }
+    const unlikeSong = async (e, liked) => {
+        e.stopPropagation()
+        e.preventDefault()
+        setCommentDeleting(true)
+        console.log(liked, 'Liked Id')
+        const response = await fetch(`/api/likes/${liked[0].id}`, {
+            method: 'DELETE'
+        })
+        if (response.ok) {
+            const res = response.json()
+            if (res.errors) {
+                return alert(res.errors.map(error => error))
+            } else {
+                setCommentDeleting(false)
+            }
         }
     }
     return (
@@ -161,6 +204,7 @@ const SingleSongPage = () => {
                     <div className="redirect-button-container-div">
                         <button className='redirect-buttons-single' onClick={(e) => redirectToSongEdit(e, song)}>Edit Song</button>
                         <button className='redirect-buttons-single' onClick={(e) => deleteSong(e)}>Delete Song</button>
+
                     </div>
                 )}
                 {            //! Create A Comment
@@ -182,9 +226,17 @@ const SingleSongPage = () => {
             </div>
             {song && song.comments && (
                 <div>
+                    <div><h3>{song.likes.length} Likes</h3>
+                    {liked.length === 0 && (
+                        <button className="redirect-buttons-single" onClick={(e) => likeSong(e)}>Like</button>
+                    )}
+                    {liked.length > 0 && (
+                        <button className="redirect-buttons-single" onClick={(e) => unlikeSong(e, liked)}>Liked</button>
+                    )}
+                    </div>
                     <h3> {song.comments.length} Comments </h3>
                     {song.comments.map(comment =>
-                        <IndividualComments comment={comment} user={user} songId={songId}/>
+                        <IndividualComments comment={comment} user={user} songId={songId} />
                     )}
 
                 </div>
